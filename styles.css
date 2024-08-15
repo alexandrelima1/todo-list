@@ -103,9 +103,9 @@ li button:hover {
 }
 
 li:hover {
-    border-color: #007bff; /* Muda a cor da borda ao passar o mouse */
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); /* Adiciona uma sombra sutil */
-    background-color: #d7d5d5; /* Adiciona uma leve cor de fundo ao passar o mouse */
+    border-color: #007bff; 
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); 
+    background-color: #d7d5d5; 
 }
 
 
@@ -129,12 +129,12 @@ li:hover {
 
     input[type="text"] {
         font-size: 0.9em;
-        width: 185px;
+        width: 241px;
     }
 
     button {
-        width: 80px;
-        padding: 8px;
+        width: auto;
+        padding: 10px;
         font-size: 0.9em;
     }
 
