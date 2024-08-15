@@ -101,7 +101,7 @@ li button:hover{
 @media (max-width: 600px) {
     .todo-container {
         padding: 15px;
-        width: 290px;
+        width: 300px;
     }
 
     input[type="text"] {
@@ -110,7 +110,7 @@ li button:hover{
     }
 
     button {
-        width: 75px;
+        width: 80px;
         padding: 8px;
         font-size: 0.9em;
     }
