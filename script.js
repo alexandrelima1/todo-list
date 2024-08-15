@@ -1,10 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const addTaskButton = document.getElementById('add-task-button');
     const taskInput = document.getElementById('new-task');
     const todoList = document.getElementById('todo-list');
 
-    
     const loadTasks = () => {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         tasks.forEach(task => {
@@ -12,37 +10,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
- 
     const saveTasks = () => {
         const tasks = [];
         todoList.querySelectorAll('li').forEach(listItem => {
+            const taskText = listItem.querySelector('.task-text').textContent;
             tasks.push({
-                text: listItem.textContent.replace('Remover', '').trim(),
+                text: taskText,
                 completed: listItem.classList.contains('completed')
             });
         });
         localStorage.setItem('tasks', JSON.stringify(tasks));
     };
 
-    
     const createTaskElement = (taskText, completed = false) => {
         const listItem = document.createElement('li');
-        listItem.textContent = taskText;
+
+        // Criar o span para o texto da tarefa
+        const taskSpan = document.createElement('span');
+        taskSpan.className = 'task-text';
+        taskSpan.textContent = taskText;
 
         if (completed) {
-            listItem.classList.add('completed');
+            taskSpan.classList.add('completed');
         }
 
-       
-        listItem.addEventListener('click', () => {
-            listItem.classList.toggle('completed');
+        listItem.appendChild(taskSpan);
+
+        // Adicionar evento para marcar como completo
+        taskSpan.addEventListener('click', () => {
+            taskSpan.classList.toggle('completed');
             saveTasks();
         });
 
-  
+        // Criar o botão de remover
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Remover';
-        deleteButton.addEventListener('click', () => {
+        deleteButton.textContent = 'X';
+        deleteButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que o clique remova a tarefa ao marcar como completa
             todoList.removeChild(listItem);
             saveTasks();
         });
@@ -50,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         listItem.appendChild(deleteButton);
         todoList.appendChild(listItem);
     };
-
 
     const addTask = () => {
         const taskText = taskInput.value.trim();
@@ -65,10 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
         taskInput.value = ''; 
     };
 
-    
     addTaskButton.addEventListener('click', addTask);
 
-   
     taskInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             addTask();

@@ -9,14 +9,12 @@ body {
     box-sizing: border-box;
 }
 
-.todo-container{
+.todo-container {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     width: 500px;
-    
-
 }
 
 h1 {
@@ -24,23 +22,21 @@ h1 {
     color: #333;
 }
 
-
-p{
+p {
     text-align: center;
     color: #333;
 }
 
-
-input[type="text"]{
-    width: 70%;
+input[type="text"] {
+    width: 86%;
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
     font-size: 16px;
 }
 
-button{
-    width: 24%;
+button {
+    width: 40px;
     background-color: #28a745;
     color: white;
     border: none;
@@ -50,16 +46,16 @@ button{
     font-size: 16px;
 }
 
-button:hover{
+button:hover {
     background-color: #218838;
 }
 
-ul{
+ul {
     list-style-type: none;
     padding: 0;
 }
 
-li{
+li {
     background-color: #f9f9f9;
     margin-bottom: 10px;
     padding: 10px;
@@ -67,25 +63,51 @@ li{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    word-wrap: break-word; /* Quebra palavras longas para a próxima linha */
+    word-break: break-word; /* Garante que palavras longas sejam quebradas */
+    width: 150;
+    position: relative; /* Permite o uso de position absolute nos filhos */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transições suaves para o hover */
+    padding-right: 50px; /* Adiciona espaço à direita para o botão */
 }
 
-li.completed {
+li span {
+    flex-grow: 1;
+    word-wrap: break-word;
+    word-break: break-word;
+    width: 150px;
+}
+
+li .task-text.completed {
     text-decoration: line-through;
-    color: #888;
+    color: #888; /* Cor do texto riscado */
 }
 
 li button {
+    width: 40px;
     background-color: #dc3545;
     color: white;
     border: none;
     border-radius: 4px;
-    padding: 5px 10px;
+    padding: 10px 10px;
     cursor: pointer;
+    position: absolute; /* Coloca o botão fora da borda do li */
+    right: 4px; /* Posiciona o botão à direita fora do li */
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente o botão */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra ao botão */
 }
 
-li button:hover{
+li button:hover {
     background-color: #c82333;
 }
+
+li:hover {
+    border-color: #007bff; /* Muda a cor da borda ao passar o mouse */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2); /* Adiciona uma sombra sutil */
+    background-color: #d7d5d5; /* Adiciona uma leve cor de fundo ao passar o mouse */
+}
+
 
 .copyright {
     position: absolute;
@@ -122,5 +144,27 @@ li button:hover{
 
     li {
         font-size: 0.9em;
+        display: flex;
+        flex-direction: column; /* Alinha o texto e o botão verticalmente */
+        align-items: flex-start; /* Alinha os itens ao início */
+        padding: 10px;
+    }
+
+    li span.task-text {
+        max-width: 100%; /* Garante que o texto ocupe 100% da largura disponível */
+        word-wrap: break-word; /* Quebra palavras longas em linhas diferentes */
+        word-break: break-word;
+        margin-bottom: 5px; /* Espaçamento entre o texto e o botão */
+    }
+
+    li button {
+        align-self: flex-end; /* Posiciona o botão à direita dentro da li */
+        width: auto;
+        margin-top: 5px; /* Espaço entre o botão e o texto */
+    }
+
+    li.completed .task-text {
+        text-decoration: line-through;
+        color: #888;
     }
 }
