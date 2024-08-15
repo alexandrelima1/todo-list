@@ -105,9 +105,11 @@ li button:hover{
 
     input[type="text"] {
         font-size: 0.9em;
+        width: 250px;
     }
 
     button {
+        max-width: 150px;
         padding: 8px;
         font-size: 0.9em;
     }
