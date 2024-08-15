@@ -15,6 +15,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     width: 500px;
+    
 
 }
 
@@ -88,7 +89,7 @@ li button:hover{
 
 .copyright {
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     left: 10px;
     font-size: 12px;
     color: #333;
